@@ -23,10 +23,10 @@ module.exports = {
    console.log(err,res)
 });
 // }*/
-pool.query('select * from cadastro', (err, res) => {
-    if (err) {
-      console.log(err.stack);
-    } else {
-      console.log(res.rows[0].cad_email)
-    }
-  })
+// pool.query('select * from cadastro', (err, res) => {
+//     if (err) {
+//       console.log(err.stack);
+//     } else {
+//       console.log(res.rows[0].cad_email)
+//     }
+//   })
