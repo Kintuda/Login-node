@@ -9,7 +9,9 @@ const dbConfig = {
 }
 const pool = new Pool(dbConfig)
 module.exports = {
+  Pool,
   pool,
+  dbConfig,
   query: (text, params = []) => {
 
   }

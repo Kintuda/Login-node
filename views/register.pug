@@ -1,26 +1,39 @@
 extends layout
 block content
-  p #{teste}
-  .col-md-3
-    Registro
-    form(role='form',method='POST',action='/users')
-      .form-group
-        label(for='name') Nome
-        input.form-control(name = 'name', type='name', placeholder='Enter name')
-      .form-group
-        label(for='exampleInputEmail1') Username
-        input#exampleInputEmail1.form-control(name='usr', type='text', placeholder='Enter email')
-      .form-group
-        label(for='exampleInputEmail1') Email
-        input#exampleInputEmail1.form-control(name='email',type='text', placeholder='Enter email')
-      .form-group
-        label(for='exampleInputEmail1') senha
-        input#exampleInputEmail1.form-control(name='senha',type='password', placeholder='Enter email')
-      .form-group
-        label(for='exampleInputEmail1') senha
-        input#exampleInputEmail1.form-control(name='senha2',type='password', placeholder='Enter email')
-      .form-group
-        label(for='exampleInputEmail1') Fone
-        input#exampleInputEmail1.form-control(name='telefone',type='text', placeholder='Enter email')
 
-      button.btn.btn-default(type='submit') Submit
+  .container
+    h1 Registro
+    h1  #{teste}
+    if teste =='Cadastro completo'
+      .alert.alert-success(role='alert')
+        strong Parabéns
+        |  Cadastro completo
+
+    if errors
+        each i in errors
+          .alert.alert-danger(role='alert')
+            strong Erro
+            |  Erro de cadastro + errors
+    .col-md-3
+      Registro
+      form(role='form',method='POST',action='/users/register')
+        .form-group
+          label(for='name',name='log') Nome
+          input.form-control(name = 'name', type='name', placeholder='Digite seu nome')
+        .form-group
+          label(for='exampleInputEmail1',name='log') Username
+          input#exampleInputEmail1.form-control(name='usr', type='text', placeholder='Digite seu Username')
+        .form-group
+          label(for='exampleInputEmail1',name='log') Email
+          input#exampleInputEmail1.form-control(name='email',type='text', placeholder='Digite seu email')
+        .form-group
+          label(for='exampleInputEmail1',name='log') senha
+          input#exampleInputEmail1.form-control(name='senha',type='password', placeholder='Digite sua senha')
+        .form-group
+          label(for='exampleInputEmail1',name='log') senha
+          input#exampleInputEmail1.form-control(name='senha2',type='password', placeholder='Confirme sua senha')
+        .form-group
+          label(for='exampleInputEmail1',name='log') Fone
+          input#exampleInputEmail1.form-control(name='telefone',type='text', placeholder='Digite seu telefone')
+
+        button.btn.btn-default(type='submit') Submit

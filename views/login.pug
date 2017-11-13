@@ -1,0 +1,10 @@
+extends layout
+block content
+  .container
+      form.form-signin(role='form',method='POST',action='/users/login')
+        h2.form-signin-heading Login
+        label.sr-only(for='inputEmail') Nome de usuário
+        input#inputEmail.form-control(name='username',type='text', placeholder='Username', required='', autofocus='')
+        label.sr-only(for='inputPassword') Senha
+        input#inputPassword.form-control(name='password',type='password', placeholder='Password', required='')
+        button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign in

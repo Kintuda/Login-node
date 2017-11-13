@@ -61,23 +61,22 @@ passport.use(new LocalStrategy(
   function(username, password, done) {
     console.log(username)
     console.log(password)
-    pool.query('SELECT cad_id,cad_senha FROM cadastro WHERE cad_username = $1',[username],(err,result)=>{
+    pool.query('SELECT cad_senha FROM cadastro WHERE cad_username = $1',[username],(err,res)=>{
       if(err){done(err)};
-      console.log(result.rows[0])
-       if (result.rows[0] === undefined) {
+      console.log(res.rows[0])
+       if (res.rows[0] === undefined) {
          done(null,false)
        }
-       console.log(result.rows[0])
-        if(result.rows[0]!=undefined){
-          const hash = result.rows[0].cad_senha
-          bcrypt.compare(password,hash,(err,response)=>{
-              if (response === true) {
-                 // return done(null,{result.rows[0].cad_id});
-              }else{
-                  return done(null,false);
-             }
-           })
-        }
+       console.log(res.rows[0])
+        if(res.rows[0]!=undefined){const hash = res.rows[0].cad_senha;}
+        bcrypt.compare(password,hash,(err,response)=>{
+          if (response === true) {
+             return done(null,{cad_id:43});
+          }else{
+            return done(null,false);
+          }
+        })
+
        return done(null,'jdaon')
     })
   }
