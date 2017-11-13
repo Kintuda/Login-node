@@ -8,7 +8,7 @@ const dbConfig = {
   port: 5432,
   ssl: false
 }
-// const pool = new Pool(dbConfig)
+const pool = new Pool(dbConfig)
 // db.query('SELECT * from local', (err, res) => {
 //   if (err) {
 //     console.log(err.stack)
@@ -20,7 +20,7 @@ const dbConfig = {
 //   var resp = await db.query('SELECT * FROM cadastro')
 //   console.log(resp.rows)
 // }
-db.query('select * from local', (err, res) => {
+pool.query('select * from local', (err, res) => {
     if (err) {
       console.log(err.stack);
     } else {
